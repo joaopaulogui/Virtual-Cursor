@@ -93,6 +93,7 @@ def main():
                 fps = 1.0 / max(now - prev_time, 1e-6)
                 prev_time = now
                 draw_text(frame, f"FPS: {fps:.0f}", (16, 92), color=(255, 255, 255), size=12)
+                print(f"FPS: {fps:.0f}")
 
                 # sempre mantém apenas o frame mais recente na fila
                 if frame_queue.full():
