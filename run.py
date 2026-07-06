@@ -17,6 +17,7 @@ TIP_THUMB  = 4
 TIP_INDEX  = 8
 TIP_MIDDLE = 12
 TIP_RING = 16
+TIP_PINKY = 20
 
 pyautogui.FAILSAFE = False
 pyautogui.PAUSE = 0  # remove o delay artificial de 0.1s por chamada do pyautogui
@@ -31,6 +32,7 @@ def main():
     smooth_x, smooth_y = SCREEN_W // 2, SCREEN_H // 2
     left_button = False
     right_button = False
+    middle_button = False
 
     base_options = python.BaseOptions(model_asset_path=MODEL_PATH)
     options = vision.HandLandmarkerOptions(
@@ -77,11 +79,13 @@ def main():
                     thumb = landmarks[TIP_THUMB]
                     middle = landmarks[TIP_MIDDLE]
                     ring = landmarks[TIP_RING]
+                    pinky = landmarks[TIP_PINKY]
 
                     left_button = press_mouse_button(thumb, middle, left_button, "left")
                     right_button = press_mouse_button(thumb, ring, right_button, "right")
+                    middle_button = press_mouse_button(thumb, pinky, middle_button, "middle")
 
-                    status = "botão esquerdo" if left_button else "botão direito" if right_button else "movendo"
+                    status = "botão esquerdo" if left_button else "botão direito" if right_button else "botão do meio" if middle_button else "movendo"
                     color = (0, 80, 255) if left_button or right_button else (50, 210, 100)
                     draw_text(frame, status, (16, 36), color, size=12)
                     draw_text(frame, f"cursor: ({smooth_x}, {smooth_y})", (16, 64), color, size=12)
