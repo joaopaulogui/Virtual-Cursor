@@ -29,6 +29,7 @@ def main():
     smooth_x, smooth_y = SCREEN_W // 2, SCREEN_H // 2
     left_button = False
     right_button = False
+    middle_button = False
 
     base_options = python.BaseOptions(model_asset_path=MODEL_PATH)
     options = vision.HandLandmarkerOptions(
