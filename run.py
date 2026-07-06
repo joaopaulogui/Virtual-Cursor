@@ -16,6 +16,7 @@ TIP_MIDDLE = 12
 TIP_RING = 16
 
 pyautogui.FAILSAFE = False 
+pyautogui.PAUSE = 0
 
 if not os.path.exists(MODEL_PATH):
     print("Modelo não encontrado. Baixando modelo...")
