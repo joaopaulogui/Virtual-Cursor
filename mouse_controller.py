@@ -13,7 +13,7 @@ def move_cursor(point, smooth_x, smooth_y):
 
     new_smooth_x = int(smooth_x * SMOOTHING + raw_x * (1 - SMOOTHING))
     new_smooth_y = int(smooth_y * SMOOTHING + raw_y * (1 - SMOOTHING))
-    pyautogui.moveTo(smooth_x, smooth_y)
+    pyautogui.moveTo(new_smooth_x, new_smooth_y)
 
     return new_smooth_x, new_smooth_y
 
